@@ -117,7 +117,7 @@
 
 <script>
 httpGeRequest = async () => {
-    response = await fetch("https://bond-common-rest-api.herokuapp.com/users?id=1")
+    response = await fetch("https://bond-common-rest-api.herokuapp.com/api/query?type=users&id=1")
 	myJson = await response.json();
     document.getElementById("userFullName").innerHTML = myJson.lastName + ", " + myJson.firstName;
 	document.getElementById("userPhoneNumber").innerHTML = myJson.phoneNumber;
