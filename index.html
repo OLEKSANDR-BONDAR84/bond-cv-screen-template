@@ -116,10 +116,20 @@
 </footer>
 
 <script>
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function demo() {
+  while(true){
+		await sleep(1000*60*5);
+		response = await fetch("https://bond-common-rest-api.herokuapp.com/api/query?type=users&id=1")
+		console.log("demo");
+	}
+}
 httpGeRequest = async () => {
-    response = await fetch("https://bond-common-rest-api.herokuapp.com/api/query?type=users&id=1")
+	response = await fetch("https://bond-common-rest-api.herokuapp.com/api/query?type=users&id=1")
 	myJson = await response.json();
-    document.getElementById("userFullName").innerHTML = myJson.lastName + ", " + myJson.firstName;
+	document.getElementById("userFullName").innerHTML = myJson.lastName + ", " + myJson.firstName;
 	document.getElementById("userPhoneNumber").innerHTML = myJson.phoneNumber;
 	document.getElementById("userCityName").innerHTML = myJson.cityName;
 	document.getElementById("userEmailAdress").innerHTML = myJson.emailAdress;
@@ -135,6 +145,7 @@ httpGeRequest = async () => {
 	document.getElementById("userExpDesc3").innerHTML = myJson.experiences[2].description;
 }
 httpGeRequest()
+demo()
 </script>
 </body>
 </html>
